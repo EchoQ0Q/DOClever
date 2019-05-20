@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./Server/bin/www"
+    "start": "node ./Server/bin/www",
+    "dev": "webpack --config ./Client/dev.js",
+    "build": "webpack --config ./Client/webpack.config.js"
   },
   "dependencies": {
     "archiver": "^1.3.0",

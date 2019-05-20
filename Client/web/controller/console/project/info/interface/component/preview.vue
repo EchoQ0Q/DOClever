@@ -236,6 +236,9 @@
                                         <el-radio-button label="1">
                                             Table
                                         </el-radio-button>
+                                        <el-radio-button label="2">
+                                            JSON_Simple
+                                        </el-radio-button>
                                     </el-radio-group>
                                     <el-row class="row" style="margin-top: 10px">
                                         <div v-show="!outJSONType">

@@ -1671,6 +1671,7 @@ module.exports={
             context.state.type=data;
             if(data=="preview")
             {
+                console.log('preview')
                 var obj=context.state.param[context.state.index].outInfo.jsonType==1?[]:{};
                 var result=helper.resultSave(context.state.param[context.state.index].result);
                 var bJSON=false,objJSON={};
