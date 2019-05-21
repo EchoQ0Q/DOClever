@@ -474,7 +474,7 @@ helper.convertToJSON=function (data,obj,info,run) {
     }
 }
 
-helper.format=function (txt,mix,outParam,status) {
+helper.format=function (txt,mix,outParam,status, isRemark) {
     var indentChar = '&nbsp;&nbsp;&nbsp;&nbsp;';
     if(/^\s*$/.test(txt)){
         alert('数据为空,无法格式化! ');
@@ -743,6 +743,9 @@ helper.format=function (txt,mix,outParam,status) {
         return null;
     }
     var getRemark=function (name,raw) {
+        if(isRemark){
+            return "";
+        }
         var type=["String","Number","Boolean","Array","Object","Mixed"];
         if(!raw)
         {

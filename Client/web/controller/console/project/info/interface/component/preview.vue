@@ -230,24 +230,31 @@
                             <el-row class="row" style="padding: 0 30px;">
                                 <el-row class="row" v-if="outInfo.type==0 && drawMix.length>0">
                                     <el-radio-group size="small" v-model="outJSONType">
-                                        <el-radio-button :label="0">
+                                        <el-radio-button label="0">
                                             JSON
                                         </el-radio-button>
                                         <el-radio-button label="1">
-                                            Table
-                                        </el-radio-button>
-                                        <el-radio-button label="2">
                                             JSON_Simple
                                         </el-radio-button>
+                                        <el-radio-button label="2">
+                                            Table
+                                        </el-radio-button>
+                                        
                                     </el-radio-group>
                                     <el-row class="row" style="margin-top: 10px">
-                                        <div v-show="!outJSONType">
+                                        <div v-show="outJSONType === '0'">
                                             <template v-for="item in drawMix">
                                                 <div class="row" style="font-size: 14px;min-height: 25px;line-height: 25px;margin: 0;padding: 0;background-color: #fff9e6;word-break: break-all" v-html="item">
                                                 </div>
                                             </template>
                                         </div>
-                                        <outjsonpreview :index="index" :data="item" v-show="outJSONType"></outjsonpreview>
+                                        <div v-show="outJSONType === '1'">
+                                            <template v-for="item in drawMix_simple">
+                                                <div class="row" style="font-size: 14px;min-height: 25px;line-height: 25px;margin: 0;padding: 0;background-color: #fff9e6;word-break: break-all" v-html="item">
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <outjsonpreview :index="index" :data="item" v-show="outJSONType === '2'"></outjsonpreview>
                                     </el-row>
                                 </el-row>
                                 <table style="width: 100%;border-collapse: collapse" v-if="outInfo.type==1" class="table-hover">
@@ -307,7 +314,7 @@
         data:function () {
             return {
                 bodyJSONType:0,
-                outJSONType:0
+                outJSONType: '0'
             }
         },
         mixins:[sessionChange],
@@ -342,6 +349,9 @@
             },
             drawMix:function () {
                 return this.$store.state.drawMix
+            },
+            drawMix_simple: function () {
+                return this.$store.state.drawMix_simple
             },
             rawMock:function () {
                 return this.$store.getters.rawMock

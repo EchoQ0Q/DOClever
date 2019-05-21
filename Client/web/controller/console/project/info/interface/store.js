@@ -110,6 +110,7 @@ module.exports={
         index:0,
         preview:"",
         drawMix:[],
+        drawMix_simple: [],
         objCopy:null,
         searchText:"",
         searchType:0,
@@ -1685,6 +1686,7 @@ module.exports={
                 var info=helper.handleMockInfo(0,context.state.param[context.state.index].param,context.state.param[context.state.index].query,context.state.param[context.state.index].header,bJSON?objJSON:context.state.param[context.state.index].body,context.state);
                 helper.convertToJSON(result,obj,info);
                 context.state.drawMix=helper.format(JSON.stringify(obj),1,result,context.state.status).draw;
+                context.state.drawMix_simple=helper.format(JSON.stringify(obj),1,result,context.state.status, true).draw;
             }
         },
         saveTemplate:function (context,data) {
